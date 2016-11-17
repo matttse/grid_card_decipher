@@ -4,7 +4,7 @@
 package grid_card_decipher;
 
 /**
- * @author CH165496
+ * @author MTse
  *
  */
 public class newClipboard {
