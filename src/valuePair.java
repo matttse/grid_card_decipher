@@ -1,6 +1,6 @@
 
 /**
- * @author CH165496
+ * @author Mtse
  *
  */
 public abstract class valuePair {
