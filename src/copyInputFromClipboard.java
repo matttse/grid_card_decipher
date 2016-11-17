@@ -33,7 +33,7 @@ public class copyInputFromClipboard {
 		}
 		
 		if (clipboardInput != null) {
-			System.out.println(clipboardInput);
+//			System.out.println(clipboardInput);
 			return (clipboardInput);
 		} else {
 			clipboardInput = "Invalid Copy Method";
