@@ -1,6 +1,8 @@
 /**
  * 
  */
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,33 +12,32 @@ import java.util.regex.Pattern;
  */
 public class regexInput extends valuePair {
 	
-	protected String inputValue = "";
+//	protected String[] inputValue;
+	List<String> inputValue = new ArrayList<String>();
 	private String pattern = "";
+	private int valCnt = 0;
 	
-	public regexInput() {
-		super();
-		this.letter = "D";//inputValue.substring(0);
-		this.number = "1";//inputValue.substring(1);
-	}
 	/**
 	 * @param args
 	 * @return 
 	 */
 	public String getInputValue(String clippy) {
 		// Declare Pattern
-		pattern = "[..]";//"\[.?)\]";
+		pattern = "\\[..\\]";//"\[.?)\]";
 		
 		// pattern object
 		Pattern checking = Pattern.compile(pattern);
 		
 		// value pair match object
-		Matcher inputValue = checking.matcher(clippy);
-		if (inputValue.find()) {
-			System.out.println(inputValue.group(0));
-			System.out.println(inputValue.group(1));
-		}
+		Matcher clipboardValue = checking.matcher(clippy);
+		//while there are still values to find, keep iterating
+		while (clipboardValue.find()) {
+			inputValue.add(clipboardValue.group(0));
+			valCnt++;
+		} 
+		valCnt = 0;//reset
 		
-		
+		//return string
 		return inputValue.toString();
 		
 	}
