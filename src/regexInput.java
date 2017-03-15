@@ -14,7 +14,8 @@ import java.io.*;
 public class regexInput {
 	
 //	protected String[] inputValue;
-	List<String> inputValue = new ArrayList<String>();
+//	List<String> inputValue = new ArrayList<String>();
+	String inputValue = "";
 	private String pattern = "";
 	private int valCnt = 0;
 	
@@ -34,13 +35,14 @@ public class regexInput {
 		Matcher clipboardValue = checking.matcher(clippy);
 		//while there are still values to find, keep iterating
 		while (clipboardValue.find()) {
-			inputValue.add(clipboardValue.group(0));
-			valCnt++;
+//			inputValue.add(clipboardValue.group(0));
+			inputValue += clipboardValue.group(1).charAt(0);
+			inputValue += clipboardValue.group(2).charAt(0);
+			
 		} 
-		valCnt = 0;//reset
 		
-		//return string
-		return inputValue.toString();
+		
+		return inputValue;
 		
 	}
 	
