@@ -52,28 +52,6 @@ public class main {
 
 			int col = 0;
 			for (int cnt = 0; cnt < myVal.inputValue.length(); cnt++) {
-				//col setter
-				if (myVal.inputValue.charAt(cnt) == a || myVal.inputValue.charAt(cnt) == (a-32)) {
-					col = 0; 
-				} else if (myVal.inputValue.charAt(cnt) == b || myVal.inputValue.charAt(cnt) == (b-32)) {
-					col = 1; 
-				} else if (myVal.inputValue.charAt(cnt) == c || myVal.inputValue.charAt(cnt) == (c-32)) {
-					col = 2; 
-				} else if (myVal.inputValue.charAt(cnt) == d || myVal.inputValue.charAt(cnt) == (d-32)) {
-					col = 3; 
-				} else if (myVal.inputValue.charAt(cnt) == e || myVal.inputValue.charAt(cnt) == (e-32)) {
-					col = 4; 
-				} else if (myVal.inputValue.charAt(cnt) == f || myVal.inputValue.charAt(cnt) == (f-32)) {
-					col = 5; 
-				} else if (myVal.inputValue.charAt(cnt) == g || myVal.inputValue.charAt(cnt) == (g-32)) {
-					col = 6; 
-				} else if (myVal.inputValue.charAt(cnt) == h || myVal.inputValue.charAt(cnt) == (h-32)) {
-					col = 7; 
-				} else if (myVal.inputValue.charAt(cnt) == i || myVal.inputValue.charAt(cnt) == (i-32)) {
-					col = 8; 
-				} else if (myVal.inputValue.charAt(cnt) == j || myVal.inputValue.charAt(cnt) == (j-32)) {
-					col = 9; 
-				}
 
 				//row getter
 				if (cnt % 2 != 0 && cnt != 0) {
@@ -81,6 +59,30 @@ public class main {
 					//offset by 10
 					testout += stringBuffer.substring(row*10+col, row*10+col+1);
 
+				} else {
+					//col setter
+					if (myVal.inputValue.charAt(cnt) == a || myVal.inputValue.charAt(cnt) == (a-32)) {
+						col = 0; 
+					} else if (myVal.inputValue.charAt(cnt) == b || myVal.inputValue.charAt(cnt) == (b-32)) {
+						col = 1; 
+					} else if (myVal.inputValue.charAt(cnt) == c || myVal.inputValue.charAt(cnt) == (c-32)) {
+						col = 2; 
+					} else if (myVal.inputValue.charAt(cnt) == d || myVal.inputValue.charAt(cnt) == (d-32)) {
+						col = 3; 
+					} else if (myVal.inputValue.charAt(cnt) == e || myVal.inputValue.charAt(cnt) == (e-32)) {
+						col = 4; 
+					} else if (myVal.inputValue.charAt(cnt) == f || myVal.inputValue.charAt(cnt) == (f-32)) {
+						col = 5; 
+					} else if (myVal.inputValue.charAt(cnt) == g || myVal.inputValue.charAt(cnt) == (g-32)) {
+						col = 6; 
+					} else if (myVal.inputValue.charAt(cnt) == h || myVal.inputValue.charAt(cnt) == (h-32)) {
+						col = 7; 
+					} else if (myVal.inputValue.charAt(cnt) == i || myVal.inputValue.charAt(cnt) == (i-32)) {
+						col = 8; 
+					} else if (myVal.inputValue.charAt(cnt) == j || myVal.inputValue.charAt(cnt) == (j-32)) {
+						col = 9; 
+					}
+					
 				}
 			}
 			
