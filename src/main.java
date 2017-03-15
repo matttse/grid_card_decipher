@@ -32,14 +32,14 @@ public class main {
 	public static void main(String[] args){
 		// instantiate copyInputFromClipboard
 		clippy = copyInputFromClipboard.getClipboardVal(null);
-		
+		String testout = "";
 		// instantiate regex runner object
 		regexInput myVal = new regexInput();
-		//[a1][b2][c3][d5]
+		//[a1][b2][c3][d5][d2]
 		System.out.println(myVal.getInputValue(clippy));//pass clipboard to object
 		char[] chArr = new char[10];
 		try {
-			File file = new File("C:/Users/ch165496/Desktop/serial_num_14194.txt");
+			File file = new File("asdasdasd.txt");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			StringBuffer stringBuffer = new StringBuffer();
@@ -47,45 +47,45 @@ public class main {
 			
 			while ((line = bufferedReader.readLine()) != null) {
 				stringBuffer.append(line);
-//				stringBuffer.append("\n");
 			}
 			stringBuffer.trimToSize();
-			//parse input Code response
-			//only search every even input aka columns (A-J = 0-9)
-			//if char is 1
-			//only search stringbuffer 0-9
-			//if char is 2
-			//only search stringbuffer 10-19
-			//if char is 3
-			//only search stringbuffer 20-29
-			//..
-			/*
-			for (int cnt = 0; cnt < myVal.inputValue.length(); cnt++) {
-//				int rowchk = (int) myVal.inputValue.get(cnt).charAt(cnt);//returns a
-				char charchk;
-				
-				//column check (even numbers divisible by 2)
-				if (cnt % 2 != 0) {
-					int rowchk = (int) myVal.inputValue.toUpperCase().charAt(cnt);	
-					//a
-					if (rowchk == a || rowchk == (a-32)) {
-						//get chars (0-9) 
-						
-						stringBuffer.getChars(0, (9-myVal.inputValue.charAt(cnt+1)), chArr, cnt);	
-					} else if (rowchk == b || rowchk == (b-32)) {
-						stringBuffer.getChars(10, (19-myVal.inputValue.charAt(cnt+1)), chArr, cnt);
-					}
-					
 
-//					stringBuffer.getChars(cnt, cnt + 1, chArr, cnt);
-//				} else {
-					
+			int col = 0;
+			for (int cnt = 0; cnt < myVal.inputValue.length(); cnt++) {
+				//col setter
+				if (myVal.inputValue.charAt(cnt) == a || myVal.inputValue.charAt(cnt) == (a-32)) {
+					col = 0; 
+				} else if (myVal.inputValue.charAt(cnt) == b || myVal.inputValue.charAt(cnt) == (b-32)) {
+					col = 1; 
+				} else if (myVal.inputValue.charAt(cnt) == c || myVal.inputValue.charAt(cnt) == (c-32)) {
+					col = 2; 
+				} else if (myVal.inputValue.charAt(cnt) == d || myVal.inputValue.charAt(cnt) == (d-32)) {
+					col = 3; 
+				} else if (myVal.inputValue.charAt(cnt) == e || myVal.inputValue.charAt(cnt) == (e-32)) {
+					col = 4; 
+				} else if (myVal.inputValue.charAt(cnt) == f || myVal.inputValue.charAt(cnt) == (f-32)) {
+					col = 5; 
+				} else if (myVal.inputValue.charAt(cnt) == g || myVal.inputValue.charAt(cnt) == (g-32)) {
+					col = 6; 
+				} else if (myVal.inputValue.charAt(cnt) == h || myVal.inputValue.charAt(cnt) == (h-32)) {
+					col = 7; 
+				} else if (myVal.inputValue.charAt(cnt) == i || myVal.inputValue.charAt(cnt) == (i-32)) {
+					col = 8; 
+				} else if (myVal.inputValue.charAt(cnt) == j || myVal.inputValue.charAt(cnt) == (j-32)) {
+					col = 9; 
 				}
 
-			}*/
+				//row getter
+				if (cnt % 2 != 0 && cnt != 0) {
+					int row = Integer.parseInt(myVal.inputValue.substring(cnt, cnt+1))-1;
+					//offset by 10
+					testout += stringBuffer.substring(row*10+col, row*10+col+1);
+
+				}
+			}
 			
 			
-			
+			System.out.println(testout);
 			fileReader.close();
 			System.out.println("Contents of file:");
 			System.out.println(stringBuffer.toString());
