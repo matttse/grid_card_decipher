@@ -1,3 +1,6 @@
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,7 +17,6 @@ import java.io.IOException;
  */
 public class main {
 	public static String clippy = "";
-	private String test = "";
 	protected static int a = 97;
 	protected static int b = 98;
 	protected static int c = 99;
@@ -32,14 +34,14 @@ public class main {
 	public static void main(String[] args){
 		// instantiate copyInputFromClipboard
 		clippy = copyInputFromClipboard.getClipboardVal(null);
-		String testout = "";
+		String passPhrase = "";
 		// instantiate regex runner object
 		regexInput myVal = new regexInput();
-		//[a1][b2][c3][d5][d2]
+		//[a1][f2][c1][d5]
 		System.out.println(myVal.getInputValue(clippy));//pass clipboard to object
-		char[] chArr = new char[10];
+		
 		try {
-			File file = new File("asdasdasd.txt");
+			File file = new File("C:/asdasdasd.txt");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			StringBuffer stringBuffer = new StringBuffer();
@@ -49,7 +51,9 @@ public class main {
 				stringBuffer.append(line);
 			}
 			stringBuffer.trimToSize();
-
+			fileReader.close();
+			System.out.println("Contents of file:");
+			System.out.println(stringBuffer.toString());
 			int col = 0;
 			for (int cnt = 0; cnt < myVal.inputValue.length(); cnt++) {
 
@@ -57,7 +61,7 @@ public class main {
 				if (cnt % 2 != 0 && cnt != 0) {
 					int row = Integer.parseInt(myVal.inputValue.substring(cnt, cnt+1))-1;
 					//offset by 10
-					testout += stringBuffer.substring(row*10+col, row*10+col+1);
+					passPhrase += stringBuffer.substring(row*10+col, row*10+col+1);
 
 				} else {
 					//col setter
@@ -85,12 +89,13 @@ public class main {
 					
 				}
 			}
+
+			System.out.println(passPhrase);
+			StringSelection clipOut = new StringSelection(passPhrase);
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			clipboard.setContents(clipOut, clipOut);
 			
 			
-			System.out.println(testout);
-			fileReader.close();
-			System.out.println("Contents of file:");
-			System.out.println(stringBuffer.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

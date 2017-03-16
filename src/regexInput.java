@@ -1,11 +1,10 @@
 /**
  * 
  */
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.*;
+
 
 /**
  * @author MTse
@@ -13,11 +12,8 @@ import java.io.*;
  */
 public class regexInput {
 	
-//	protected String[] inputValue;
-//	List<String> inputValue = new ArrayList<String>();
 	String inputValue = "";
 	private String pattern = "";
-	private int valCnt = 0;
 	
 	/**
 	 * @param args
@@ -35,7 +31,6 @@ public class regexInput {
 		Matcher clipboardValue = checking.matcher(clippy);
 		//while there are still values to find, keep iterating
 		while (clipboardValue.find()) {
-//			inputValue.add(clipboardValue.group(0));
 			inputValue += clipboardValue.group(1).charAt(0);
 			inputValue += clipboardValue.group(2).charAt(0);
 			
